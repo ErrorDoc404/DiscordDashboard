@@ -8,7 +8,8 @@ const index = new Vue({
       avatar: null,
       guilds: null
     },
-    servers: []
+    servers: [],
+    guilds: []
   },
   created () {
     fetch('/api/auth')
@@ -22,5 +23,11 @@ const index = new Vue({
       .then(json => {
         this.servers = json
       });
+
+      fetch('/api/discord/guilds')
+        .then(res => res.json())
+        .then(json => {
+          this.guilds = json
+        });
   }
 })

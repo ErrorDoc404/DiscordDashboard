@@ -6,7 +6,7 @@ router.get('/discord', passport.authenticate('discord'));
 router.get('/discord/redirect', passport.authenticate('discord', {
     failureRedirect: '/'
 }), function(req, res) {
-    res.redirect('http://localhost:3000/menu') // Successful auth
+    res.redirect('http://localhost:3000/dashboard') // Successful auth
 });
 
 router.get('/', (req, res) => {
