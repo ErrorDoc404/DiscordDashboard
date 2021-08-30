@@ -1,0 +1,39 @@
+{
+  "name": "express-dashboard",
+  "version": "1.0.0",
+  "description": "this is an express app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "ErrorDoc404",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErrorDoc404/express.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "bugs": {
+    "url": "https://github.com/ErrorDoc404/express/issues"
+  },
+  "homepage": "https://github.com/ErrorDoc404/express#readme",
+  "dependencies": {
+    "@lavacord/discord.js": "0.0.7",
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "lavasfy": "2.2.1",
+    "pretty-ms": "^7.0.1",
+    "connect-mongo": "^4.5.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.0.2",
+    "passport": "^0.4.1",
+    "passport-discord": "^0.1.4"
+  },
+  "devDependencies": {}
+}
