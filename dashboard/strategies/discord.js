@@ -24,13 +24,13 @@ passport.use(new DiscordStrategy({
     callbackURL: process.env.CALLBACK_URL,
     scope: scopes
 }, async function(accessToken, refreshToken, profile, done) {
-      const {id, username, discriminator, avatar, guilds} = profile;
-      console.log(id, username, discriminator, avatar, guilds);
+      const {id, email, username, discriminator, avatar, guilds} = profile;
       try{
         const findUser = await User.findOneAndUpdate({discordId: id }, {
           discordTag: `${username}#${discriminator}`,
           avatar,
           guilds,
+          email,
         }, {new: true});
         if(findUser){
           console.log('user found');
@@ -41,6 +41,7 @@ passport.use(new DiscordStrategy({
             discordTag: `${username}#${discriminator}`,
             avatar,
             guilds,
+            email,
           });
           return done(null, newUser);
         }

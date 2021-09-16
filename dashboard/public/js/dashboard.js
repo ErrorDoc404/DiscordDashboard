@@ -1,5 +1,5 @@
 const index = new Vue({
-  el: '#app-index',
+  el: '#app-dashboard',
   data: {
     user: {
       _id: null,
@@ -8,7 +8,8 @@ const index = new Vue({
       avatar: null,
       guilds: null
     },
-    servers: []
+    guilds: [],
+    cache: []
   },
   created () {
     fetch('/api/auth')
@@ -17,10 +18,16 @@ const index = new Vue({
         this.user = json
       });
 
-    fetch('/api/discord/bot')
+    fetch('/api/discord/guilds')
       .then(res => res.json())
       .then(json => {
-        this.servers = json
-      });
+        this.guilds = json.guilds
+    });
+
+    fetch('/api/discord/bot/cache')
+      .then(res => res.json())
+      .then(json => {
+        this.cache = json
+    });
   }
 })

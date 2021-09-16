@@ -21,15 +21,19 @@ router.get('/guilds', async (req, res ) => {
   if(req.user){
     req.user.guilds.map((g) => {
       g.MANAGE_GUILD = new Permissions(g.permissions).has("MANAGE_GUILD", true);
-      g.IN_GUILD = client.guilds.cache.has(g.id);
+      g.IN_GUILD = client.guilds.cache.has(g.id) || false;
       return g;
     });
-    res.send(req.user.guilds);
+    res.send(req.user);
   }
 });
 
 router.get('/bot', async (req, res ) => {
     res.send(client);
+});
+
+router.get('/bot/cache', async (req, res ) => {
+    res.send(client.guilds.cache);
 });
 
 module.exports = router;

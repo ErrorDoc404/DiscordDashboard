@@ -3,6 +3,10 @@ const { Client, Collection } = require("discord.js");
 const { promises: { readdir } } = require("fs");
 const { join } = require("path");
 const { LavasfyClient } = require("lavasfy");
+const Express = require("express");
+const http = require("http");
+const path = require("path");
+const { Server } = require("socket.io");
 
 require("../extensions");
 
@@ -10,6 +14,7 @@ module.exports = class MusicClient extends Client {
     /** @param {import("discord.js").ClientOptions} [opt] */
     constructor(opt) {
         super(opt);
+
         this.commands = new Collection();
         this.manager = new Manager(this, [
             {
@@ -30,6 +35,13 @@ module.exports = class MusicClient extends Client {
             : null;
 
         this.prefix = process.env.PREFIX.toLowerCase();
+
+        // //Web Stuff
+        this.server = Express();
+        this.http = http.createServer(this.server);
+        // this.server.use("/socketio", require("../../dashboard/routes"));
+        this.io = new Server(this.http);
+        require("../../dashboard/socket")(this.io);
     }
 
     build() {

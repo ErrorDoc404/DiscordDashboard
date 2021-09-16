@@ -177,7 +177,7 @@
         <div class="content">
           <div class="row">
             <div class="col-md-12">
-              <div class="">
+              <div class="container">
                 <div class="">
                   <!-- <h5 class="title">Guilds</h5> -->
                   <!-- <p class="category">you can manage guilds in one click -->
@@ -185,38 +185,75 @@
                 </div>
                 <div class="card-body all-icons">
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6" v-for="guild in guilds" v-if="guild.MANAGE_GUILD">
+                    <div class="col-lg-4 col-md-4 col-sm-6">
                       <div class="card p-4 mt-3">
                         <div class="first">
-                          <h6 class="heading"><p class="text-primary">{{guild.name}}</p></h6>
+                          <h6 class="heading"><p class="text-primary">1-Month Plan</p></h6>
                         </div>
                         <div class="second d-flex flex-row mt-2">
-                          <div class="image mr-3" v-if="guild.icon"> <img v-bind:src="'https://cdn.discordapp.com/icons/'+guild.id+'/'+guild.icon+'.webp'" class="rounded-circle" width="60" /> </div>
-                          <div class="image mr-3" v-else> <img src="https://cdn.logojoy.com/wp-content/uploads/20210422095037/discord-mascot.png" class="rounded-circle" width="60" /> </div>
+                          <div class="image mr-3"><img src="https://cdn.logojoy.com/wp-content/uploads/20210422095037/discord-mascot.png" class="rounded-circle" width="60" /> </div>
                           <div class="">
-                            <div class="d-flex flex-row mb-1"> Watching</span>
-                              Guild
+                            <div class="d-flex flex-row mb-1">₹ 100</span>
+                              /-
                             </div>
-                            <div v-for="data in cache">
-                              <div v-if="guild.IN_GUILD && data.id === guild.id"> <button class="btn btn-outline-primary btn-sm px-2">{{data.channels.length}} Channels</button> <button class="btn btn-outline-primary btn-sm px-2">{{data.members.length}} Members</button> </div>
-                            </div>
-                            <div v-if="guild.IN_GUILD === false"> <button class="btn btn-outline-primary btn-sm px-2">Not in Guild</button> </div>
+                            <div> <button class="btn btn-outline-primary btn-sm px-2">Pay Monthly</button> </div>
                           </div>
                         </div>
                         <hr class="line-color">
-                        <div class="third mt-4" v-if="guild.IN_GUILD">
-                          <form class="" v-bind:action="'dashboard/'+guild.id" method="get">
-                            <button class="btn btn-dashboard btn-block">
-                              <i class="fa fa-clock-o"></i> Go to Dashboard
+                        <div class="third mt-4">
+                          <form action="/upgrade/1month" method="POST">
+                            <button class="btn btn-dashboard btn-block" type="submit">
+                              <i class="fa fa-clock-o"></i> BUY
                             </button>
                           </form>
                         </div>
-                        <div class="third mt-4" v-else>
-                          <a v-bind:href="'https://discord.com/oauth2/authorize?client_id=870896971207045140&permissions=2205280576&scope=bot%20identify%20guilds%20applications.commands&redirect_url=./api/auth/discord/redirect&response_type=code&guild_id='+guild.id">
-                          <button class="btn btn-primary btn-block">
-                            <i class="fa fa-clock-o"></i> Add Bot
-                          </button>
-                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                      <div class="card p-4 mt-3">
+                        <div class="first">
+                          <h6 class="heading"><p class="text-primary">3-Month Plan</p></h6>
+                        </div>
+                        <div class="second d-flex flex-row mt-2">
+                          <div class="image mr-3"><img src="https://cdn.logojoy.com/wp-content/uploads/20210422095037/discord-mascot.png" class="rounded-circle" width="60" /> </div>
+                          <div class="">
+                            <div class="d-flex flex-row mb-1">₹ 275</span>
+                              /-
+                            </div>
+                            <div> <button class="btn btn-outline-primary btn-sm px-2">Pay every 3 Month</button> </div>
+                          </div>
+                        </div>
+                        <hr class="line-color">
+                        <div class="third mt-4">
+                          <form action="/upgrade/3month" method="POST">
+                            <button class="btn btn-dashboard btn-block" type="submit">
+                              <i class="fa fa-clock-o"></i> BUY
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                      <div class="card p-4 mt-3">
+                        <div class="first">
+                          <h6 class="heading"><p class="text-primary">12-Month Plan</p></h6>
+                        </div>
+                        <div class="second d-flex flex-row mt-2">
+                          <div class="image mr-3"><img src="https://cdn.logojoy.com/wp-content/uploads/20210422095037/discord-mascot.png" class="rounded-circle" width="60" /> </div>
+                          <div class="">
+                            <div class="d-flex flex-row mb-1">₹ 1000</span>
+                              /-
+                            </div>
+                            <div> <button class="btn btn-outline-primary btn-sm px-2">Pay Yearly</button> </div>
+                          </div>
+                        </div>
+                        <hr class="line-color">
+                        <div class="third mt-4">
+                          <form action="/upgrade/12month" method="POST">
+                            <button class="btn btn-dashboard btn-block" type="submit">
+                              <i class="fa fa-clock-o"></i> BUY
+                            </button>
+                          </form>
                         </div>
                       </div>
                     </div>
